@@ -1,6 +1,6 @@
 package com.investek
 
-import java.time.LocalDate
+import java.time.{ZoneOffset, LocalDate}
 
 import spray.http._
 
@@ -41,8 +41,11 @@ object Main extends App {
     case Success(s) =>
       println(s.entity.asString.split("\n").map(x => {
         val parsedArray = x.split(",")
-        parsedArray(0)
-      } ))
+        Quantile(
+          LocalDate.parse(parsedArray(0)),
+
+        )
+      }))
 //      s.entity.asString.split("\n").foreach(line => println(123 + line))
 //      println(s.entity.asString)
       system.shutdown()
